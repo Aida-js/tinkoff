@@ -1,0 +1,103 @@
+<style>
+    .logins {
+        font-size: 16px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        line-height: 30px;
+    }
+
+    .logins:hover {
+        opacity: .6;
+        cursor: pointer;
+    }
+
+    .loginContent {
+        display: flex;
+        flex-flow: row nowrap;
+    }
+
+    .copyAll {
+        height: 40px;
+        width: 250px;
+        font-size: 14px;
+    }
+</style>
+
+
+<div class='loginContent'>
+    <div id="loginContainer"></div>
+    <div>
+        <button class="copyAll" onclick="copyAllLogins()">Copy all logins</button>
+    </div>
+</div>
+
+
+<script>
+    var logins = [
+        'ESTESLENKO',
+        'AGARIB',
+        'AVSMIRNOVA',
+        'AYKARPOV',
+        'DKARASHVILI',
+        'SVASTAFEVA',
+        'IDYANOV',
+        'AESEROV1',
+        'EMSURKOVA',
+        'MGULSHIN1',
+        'YASESYUNINA',
+        'KDELIKATNIY',
+        'NALAEVA',
+        'TKISELEVA',
+        'NGUSEV2',
+        'AKOTIN1',
+        'MDMITRIEV1',
+        'AALBOROVA',
+        'VIALEKSANDROVSKIY',
+        'DYCHECHULIN',
+        'AVFEDENKO',
+        'ILEVANDOVSKAYA',
+        'IMOROZOV6',
+        'GPETROV1',
+        'DEKUZMIN',
+    ];
+
+    function init() {
+        var container = document.getElementById('loginContainer');
+        var str = '';
+
+        for(var i = 0; i < logins.length; i++) {
+            var login = logins[i];
+
+            str += `<div class="logins" onclick="copyLogin('${login}')">${login}</div>`
+        }
+
+        container.innerHTML = str;
+    }
+
+    init();
+
+    function copyStringToClipboard (str) {
+        // Create new element
+        var el = document.createElement('textarea');
+        // Set value (string to be copied)
+        el.value = str;
+        // Set non-editable to avoid focus and move outside of view
+        el.setAttribute('readonly', '');
+        el.style = {position: 'absolute', left: '-9999px'};
+        document.body.appendChild(el);
+        // Select text inside element
+        el.select();
+        // Copy text to clipboard
+        document.execCommand('copy');
+        // Remove temporary element
+        document.body.removeChild(el);
+    }
+
+    function copyLogin (loginName) {
+        copyStringToClipboard(loginName);
+    }
+
+    function copyAllLogins() {
+        copyStringToClipboard(logins.join(' '))
+    }
+</script>
