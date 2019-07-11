@@ -45,7 +45,7 @@
         <button class="btnBlocks" onclick="update('firstBlock')">1 блок</button>
         <button class="btnBlocks" onclick="update('secondBlock')">2 блок</button>
         <button class="btnBlocks" onclick="update('thirdBlock')">3 блок</button>
-        <button class="btnBlocks">4 блок</button>
+        <button class="btnBlocks" onclick="update('fourthBlock')">4 блок</button>
         <button class="btnBlocks" onclick="addTolastBlock()">5 блок</button>
     </div>
     <div class="blok blockContent" id="blockContent"></div>
@@ -63,14 +63,14 @@
             daysBeforeCurrentDate: 15
         },
         {
-           text: '".Сумма заблокирована на карте"',
+            text: '".Сумма заблокирована на карте"',
             daysBeforeCurrentDate: 1
         },
         {
-           text: '',
+            text: '',
         },
         {
-           text: 'Открыт OR Отложен',
+            text: 'Открыт OR Отложен',
         }
     ]
 
@@ -84,14 +84,14 @@
             daysBeforeCurrentDate: 30
         },
         {
-           text: '"Отказ от операции в АТМ" OR "Отказ АТМ Утеря / кража" OR "Отказ от SMS-запросов" OR "Отказ от операции в ИБ/МП"',
+            text: '"Отказ от операции в АТМ" OR "Отказ АТМ Утеря / кража" OR "Отказ от SMS-запросов" OR "Отказ от операции в ИБ/МП"',
             daysBeforeCurrentDate: 10
         },
         {
-           text: '',
+            text: '',
         },
         {
-           text: 'Открыт OR Отложен',
+            text: 'Открыт OR Отложен',
         }
     ];
 
@@ -105,15 +105,15 @@
             daysBeforeCurrentDate: 50
         },
         {
-           text: '".Банкомат не выдал деньги"',
+            text: '".Банкомат не выдал деньги"',
             daysBeforeCurrentDate: 40
         },
         {
-           text: '"Отказ от операции в АТМ" OR "Отказ АТМ Утеря / кража" OR "Отказ от SMS-запросов" OR "Отказ от операции в ИБ/МП"',
+            text: '"Отказ от операции в АТМ" OR "Отказ АТМ Утеря / кража" OR "Отказ от SMS-запросов" OR "Отказ от операции в ИБ/МП"',
             daysBeforeCurrentDate: 40
         },
         {
-           text: '"Отказ от операции в банкомате Тинькофф"',
+            text: '"Отказ от операции в банкомате Тинькофф"',
             daysBeforeCurrentDate: 20
         },
         {
@@ -124,10 +124,22 @@
         }
     ];
 
+    var fourthBlock = [
+        {
+            text: 'Претензия/Расходные операции',
+            daysAfterCurrentDate: 2
+        },
+        {
+            text: 'Претензия/Операции в банкомате Тинькофф/Не выдал деньги - карта Тинькофф',
+            daysAfterCurrentDate: 2
+        }
+    ]
+
     var blocks = {
         firstBlock: firstBlock,
         secondBlock: secondBlock,
         thirdBlock: thirdBlock,
+        fourthBlock: fourthBlock
     }
 
     function setDateBack(days) {
@@ -141,16 +153,35 @@
         return `${day}.${month}.${d.getFullYear()}`;
     }
 
+    function setDateFuture(days) {
+        var d = new Date();
+        
+        d.setDate(d.getDate() + days);
+
+        var day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate();
+        var month = d.getMonth() + 1 < 10 ? `0${d.getMonth() + 1}` : d.getMonth() + 1;
+
+        return `${day}.${month}.${d.getFullYear()}`;
+    }
+
     function update(blockName) {
         var str = '';
         var blockInfo = blocks[blockName];
 
         for(var i = 0; i < blockInfo.length; i++) {
             var info = blockInfo[i];
+            var days = info.daysAfterCurrentDate || info.daysBeforeCurrentDate || '';
+            var date = '';
+            var isDaysAfter = !!info.daysAfterCurrentDate;
+
+            if (days !== '') {
+                date = (info.daysAfterCurrentDate ? setDateFuture : setDateBack)(days);
+            }
+
             str += `
                 <tr>
                     <td class="tableText" onclick="copyText(this)">${info.text}</td>
-                    <td class="tableText" onclick="copyText(this)">${info.daysBeforeCurrentDate != undefined ? setDateBack(info.daysBeforeCurrentDate) : ''}</td> 
+                    <td class="tableText" onclick="copyText(this)">${isDaysAfter ? '< ' : ''}${date}</td> 
                 </tr>
             `;
         }
