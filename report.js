@@ -17,7 +17,7 @@ var firstBlock = [
     {
         text: 'Открыт OR Отложен',
     }
-]
+];
 
 var secondBlock = [
     {
@@ -78,14 +78,14 @@ var fourthBlock = [
         text: 'Претензия/Операции в банкомате Тинькофф/Не выдал деньги - карта Тинькофф',
         daysAfterCurrentDate: 2
     }
-]
+];
 
 var blocks = {
     firstBlock: firstBlock,
     secondBlock: secondBlock,
     thirdBlock: thirdBlock,
     fourthBlock: fourthBlock
-}
+};
 
 function setDateBack(days) {
     var d = new Date();
@@ -125,7 +125,7 @@ function update(blockName) {
 
         str += `
             <tr>
-                <td class="tableText" onclick="copyText(this)">${info.text}</td>
+                <td onclick="copyText(this)"><div class="tableText" >${info.text}</div></td>
                 <td class="tableText" onclick="copyText(this)">${isDaysAfter ? '< ' : ''}${date}</td> 
             </tr>
         `;
@@ -145,7 +145,7 @@ function update(blockName) {
 
 function addTolastBlock() {
     document.getElementById('blockContent').innerHTML = `
-        <img src="../../icons/downey.jpg" alt="Smiley face">
+        <img src="./icons/downey.jpg" alt="Smiley face">
 
         <div class='noti'> Maybe ты посмотришь на почте? </div>
     `
@@ -153,21 +153,4 @@ function addTolastBlock() {
 
 function copyText (element) {
     copyStringToClipboard(element.textContent);
-}
-
-function copyStringToClipboard (str) {
-    // Create new element
-    var el = document.createElement('textarea');
-    // Set value (string to be copied)
-    el.value = str;
-    // Set non-editable to avoid focus and move outside of view
-    el.setAttribute('readonly', '');
-    el.style = {position: 'absolute', left: '-9999px'};
-    document.body.appendChild(el);
-    // Select text inside element
-    el.select();
-    // Copy text to clipboard
-    document.execCommand('copy');
-    // Remove temporary element
-    document.body.removeChild(el);
 }

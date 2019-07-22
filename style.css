@@ -31,7 +31,6 @@ body {
     margin-top: 64px;
 }
 
-.loginContent,
 .userTypeContainer,
 .insearhableContent {
     box-shadow: 0px 1px 4px 1px #9E9E9E;
@@ -39,6 +38,7 @@ body {
     flex-grow: 1;
     margin: 6px;
     padding: 12px;
+    height: 100%;
 }
 
 .insearhableContent {
@@ -47,8 +47,10 @@ body {
 }
 
 .userTypeContainer {
+    width: 200px;
     max-width: 200px;
     display: flex;
+    min-width: 200px;
     flex-flow: column nowrap;
     align-items: center;
 }
@@ -67,14 +69,10 @@ body {
     flex-flow: row nowrap;
 }
 
-.blok {
-    box-shadow: 0px 1px 4px 1px #9E9E9E;
-    flex-grow: 1;
-    margin: 6px;
-}
-
 .first-block {
     max-width: 200px;
+    width: 200px;
+    min-width: 200px;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -94,6 +92,11 @@ body {
     padding: 10px;
 }
 
+.tableText {
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
 .tableText:hover {
     opacity: .6;
     cursor: pointer;
@@ -111,10 +114,12 @@ body {
     cursor: pointer;
 }
 
-.loginContent {
+.loginBlock {
     display: flex;
     flex-flow: row nowrap;
     position: relative;
+    flex-grow: 1;
+    height: 100%;
 }
 
 .copyAll {
@@ -126,7 +131,43 @@ body {
     top: 10px;
 }
 
-.loginContent .loginContainer {
+.loginBlock .loginContainer {
     display: flex;
     flex-flow: column wrap;
+}
+
+.reportBlock {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.container52 {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.messages {
+    flex-grow: 1;
+    max-width: 50%;
+}
+
+.messageBlock {
+    padding: 12px;
+    box-shadow: 0px 1px 4px 1px #9E9E9E;
+    margin: 12px;
+}
+
+.checkbox {
+    transform: scale(1.5);
+    margin: 10px;
+    cursor: pointer;
 }

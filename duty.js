@@ -1,41 +1,5 @@
-<style>
-    .container52 {
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        flex-flow: row nowrap;
-    }
-
-    .messages {
-        box-shadow: 0px 1px 4px 1px #9E9E9E;
-        flex-grow: 1;
-        margin: 6px;
-        max-width: 50%;
-    }
-
-    .messageBlock {
-        padding: 12px;
-        box-shadow: 0px 1px 4px 1px #9E9E9E;
-        margin: 12px;
-    }
-
-    .checkbox {
-        transform: scale(1.5);
-        margin: 10px;
-        cursor: pointer;
-    }
-</style>
-
-<div class="container52">
-    <div class="messages" id='messages'>
-        
-    </div>
-    <div class="messages" id='messageDesc'></div>
-</div>
-
-<script>
-    var arr = [
+function getArr () {
+    return [
         {
             id: "1",
             text: 'все поступающие на back_dispute и back_refute письма, пришедшие со времени окончания смены предыдущего   дежурного',
@@ -107,42 +71,55 @@
             isShowed: false
         }
     ];
+}
 
-    function deleteMessageBlock(id) {
-        var el = document.getElementById(id);
-        el.remove()
+function deleteMessageBlock(id) {
+    var el = document.getElementById(id);
+    el.remove();
+}
+
+function setMessage(message) {
+    var node = document.createElement("div");
+    node.className = 'messageBlock';
+    node.id = message.id;
+    node.innerHTML = `<input type="checkbox" class="checkbox" onclick="deleteMessageBlock('${message.id}')">${message.text}`
+    document.getElementById('messages').append(node);
+
+    message.isShowed = true;
+
+    if (message.needAlert) {
+        alert(message.text);
     }
+}
 
-    function setMessage(message) {
-        var node = document.createElement("div");
-        node.className = 'messageBlock';
-        node.id = message.id;
-        node.innerHTML = `<input type="checkbox" class="checkbox" onclick="deleteMessageBlock('${message.id}')">${message.text}`
-        document.getElementById('messages').append(node);
 
-        message.isShowed = true;
+var intervalNew;
 
-        if (message.needAlert) {
-            alert(message.text);
-        }
-    }
 
-    setInterval(function() {
-        for (var i = 0; i < arr.length; i++ ) {
-            var message = arr[i];
-
+function startInterval() {
+    var newArr = getArr();
+    intervalNew = setInterval(function() {
+        for (var i = 0; i < newArr.length; i++ ) {
+            var message = newArr[i];
+    
             if (message.show && !message.isShowed) {
                 setMessage(message);
             }
-
+    
             if (message.time) {
                 var timeInfo = message.time.split(':');
                 var messageTime = new Date().setHours(timeInfo[0], timeInfo[1]);
-
+    
                 if (new Date() >= messageTime && !message.isShowed) {
                     setMessage(message);
                 }
             }
         }
-    }, 500)
-</script>
+    }, 500);
+}
+
+function stopInterval() {
+    clearInterval(intervalNew);
+    document.getElementById('messages').innerHTML = '';
+}
+
