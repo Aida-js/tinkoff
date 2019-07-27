@@ -2,51 +2,65 @@ function getArr () {
     return [
         {
             id: "1",
-            text: 'все поступающие на back_dispute и back_refute письма, пришедшие со времени окончания смены предыдущего   дежурного',
+            text: 'Все поступающие на back_dispute и back_refute письма, пришедшие со времени окончания смены предыдущего   дежурного',
             needAlert: false,
             show: true,
             isShowed: false,
         },
         {
             id: "2",
-            text: 'контроль за всеми открытиями, обновлениями и закрытиями инцидентов, "сборов обращений", плановых работ, касающихся функционала (при отсутствии Юли и Тани).',
+            text: 'Контроль за всеми открытиями, обновлениями и закрытиями инцидентов, "сборов обращений", плановых работ, касающихся функционала (при отсутствии Юли и Тани).',
             needAlert: false,
             show: true,
             isShowed: false
         },
         {
             id: "3",
-            text: 'обработка отчетов «Обращение по переданным СПР» + «Запросы СПР»',
+            text: 'Обработка отчетов «Обращение по переданным СПР» + «Запросы СПР»',
             needAlert: false,
             show: true,
             isShowed: false
         },
         {
             id: "4",
-            text: 'обработка отчета "Банкоматы Тинькофф"',
+            text: 'Обработка отчета "Банкоматы Тинькофф"',
             needAlert: false,
             show: true,
             isShowed: false
         },
         {
             id: "5",
-            text: 'обработка отчета "SR, по которым истекают сроки опротестования"',
+            text: 'Обработка отчета "SR, по которым истекают сроки опротестования"',
             needAlert: false,
             show: true,
             isShowed: false
         },
         {
             id: "6",
-            text: 'обработка отчета по VIP-клиентам',
+            text: 'Обработка отчета по VIP-клиентам',
             needAlert: false,
             show: true,
             isShowed: false
         },
         {
             id: "7",
-            text: 'в свободное от указанного выше время - обработка запросов по кнопке',
+            text: 'В свободное от указанного выше время - обработка запросов по кнопке',
             needAlert: false,
             show: true,
+            isShowed: false
+        },
+        {
+            id: "13",
+            text: 'Почта срочные/Обработка SR...',
+            needAlert: true,
+            time: '08:00',
+            isShowed: false
+        },
+        {
+            id: "12",
+            text: 'Отчет сумма заблокирована',
+            needAlert: true,
+            time: '09:30',
             isShowed: false
         },
         {
@@ -57,10 +71,31 @@ function getArr () {
             isShowed: false
         },
         {
+            id: "15",
+            text: 'ДВД ЧР',
+            needAlert: true,
+            time: '12:30',
+            isShowed: false
+        },
+        {
+            id: "18",
+            text: 'Сбор запросов закрыт. 1) Взять в работу. 2) Обновить заметки. 3) преждевременное зачисление',
+            needAlert: true,
+            time: '14:30',
+            isShowed: false
+        },
+        {
             id: "9",
             text: 'Присвоить вне очереди',
             needAlert: true,
             time: '15:00',
+            isShowed: false
+        },
+        {
+            id: "17",
+            text: 'Отправь письмо: "Разблокировка суммы по карте"',
+            needAlert: true,
+            time: '17:00',
             isShowed: false
         },
         {
@@ -78,20 +113,6 @@ function getArr () {
             isShowed: false
         },
         {
-            id: "12",
-            text: 'Отчет сумма заблокирована',
-            needAlert: true,
-            time: '09:30',
-            isShowed: false
-        },
-        {
-            id: "13",
-            text: 'Почта срочные/Обработка SR...',
-            needAlert: true,
-            time: '08:00',
-            isShowed: false
-        },
-        {
             id: "14",
             text: 'Почта срочные/Обработка SR...',
             needAlert: true,
@@ -99,31 +120,10 @@ function getArr () {
             isShowed: false
         },
         {
-            id: "15",
-            text: 'ДВД ЧР',
-            needAlert: true,
-            time: '12:30',
-            isShowed: false
-        },
-        {
             id: "16",
             text: 'Запросы по отчету "В работу"',
             needAlert: true,
             time: '19:00',
-            isShowed: false
-        },
-        {
-            id: "17",
-            text: 'Отправь письмо: "Разблокировка суммы по карте"',
-            needAlert: true,
-            time: '17:00',
-            isShowed: false
-        },
-        {
-            id: "17",
-            text: 'Сбор запросов закрыт. 1) Взять в работу. 2) Обновить заметки. 3) преждевременное зачисление',
-            needAlert: true,
-            time: '14:30',
             isShowed: false
         }
     ];
