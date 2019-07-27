@@ -9,65 +9,73 @@
     <title>Document</title>
 </head>
 <body>
-
-    <div class="header">
-        <div class="logo">
-            <object class="icon" type="image/svg+xml" data="icons/tinkoff.svg">Your browser does not support SVG</object>
-        </div>
-    </div>
-
-    <div class="content">
-        <div class="userTypeContainer">
-            <button onclick="showBlock('dutyBlock')">Дежурный</button>
-            <button onclick="showBlock('reportBlock')">Отчет</button>
-            <button onclick="showBlock('loginBlock')">Логины</button>
-        </div>
-        <div class="insearhableContent">
-            <!-- report -->
-            <div id="reportBlock" class="reportBlock">
-                <div class="first-block">
-                    <button class="btnBlocks" onclick="update('firstBlock')">1 блок</button>
-                    <button class="btnBlocks" onclick="update('secondBlock')">2 блок</button>
-                    <button class="btnBlocks" onclick="update('thirdBlock')">3 блок</button>
-                    <button class="btnBlocks" onclick="update('fourthBlock')">4 блок</button>
-                    <button class="btnBlocks" onclick="addTolastBlock()">5 блок</button>
-                </div>
-                <div class="blockContent" id="blockContent"></div>
+    <div class="ownContainer">
+        <div class="header">
+            <div class="logo">
+                <object class="icon" type="image/svg+xml" data="icons/tinkoff.svg">Your browser does not support SVG</object>
             </div>
-            <!-- report -->
-
-            <!-- logins -->
-            <div  id="loginBlock" class="loginBlock hidden">
-                <button class="copyAll" onclick="copyAllLogins()">Copy all logins</button>
-                <div id="loginContainer" class="loginContainer"></div>
-            </div>
-            <!-- logins -->
-
-            <!-- duty -->
-            <div id='dutyBlock' class="dutyBlock">
-                <div class="container52">
-                    <div class="messages" id='messages'>
-                        
+            <button id='reportBlockButton' class='navButton selectedTab' onclick="showBlock('reportBlock', this)">Отчет</button>
+            <button id='dutyBlockButton' class='navButton' onclick="showBlock('dutyBlock', this)">Дежурный</button>
+            <button id='loginBlockButton'class='navButton' onclick="showBlock('loginBlock', this)">Логины</button>
+        </div>
+    
+        <div class="content">
+            <div class="insearhableContent">
+                <!-- report -->
+                <div id="reportBlock" class="reportBlock">
+                    <div class="first-block">
+                        <button class="btnBlocks" onclick="update('firstBlock')">1 блок</button>
+                        <button class="btnBlocks" onclick="update('secondBlock')">2 блок</button>
+                        <button class="btnBlocks" onclick="update('thirdBlock')">3 блок</button>
+                        <button class="btnBlocks" onclick="update('fourthBlock')">4 блок</button>
+                        <button class="btnBlocks" onclick="addTolastBlock()">5 блок</button>
                     </div>
-                    <div class="messages" id='messageDesc'></div>
+                    <div class="blockContent" id="blockContent"></div>
                 </div>
+                <!-- report -->
+    
+                <!-- duty -->
+                <div id='dutyBlock' class="dutyBlock hidden">
+                    <div class="container52">
+                        <div class="messages" id='messages'>
+                            
+                        </div>
+                        <div class="messages" id='messageDesc'></div>
+                    </div>
+                </div>
+                <!-- duty -->
+    
+                <!-- logins -->
+                <div  id="loginBlock" class="loginBlock hidden">
+                    <button class="copyAll" onclick="copyAllLogins()">Copy all logins</button>
+                    <div id="loginContainer" class="loginContainer"></div>
+                </div>
+                <!-- logins -->
             </div>
-            <!-- duty -->
-        </div>
+        </div>            
     </div>
-
     <script src="./duty.js"></script>
     <script>
+        var selectedBlock = 'reportBlock';
+        var selectedNav = 'reportBlockButton';
 
-        function showBlock(blockName) {
-            ['loginBlock', 'reportBlock', 'dutyBlock'].forEach(block => {
-                document.getElementById(block).classList.remove('hidden');
-                document.getElementById(block).classList.add('hidden');
-            })
+        function showBlock(blockName, context) {
+            if (selectedBlock === blockName) {
+                return;
+            }
 
-            document.getElementById(blockName).classList.remove('hidden');
+            if (selectedBlock) {
+                document.getElementById(selectedBlock).classList.add('hidden');
+                document.getElementById(selectedNav).classList.remove('selectedTab');
+            }
 
-            if (blockName === 'dutyBlock') {
+            selectedBlock = blockName;
+            selectedNav = context.id;
+
+            document.getElementById(selectedBlock).classList.remove('hidden');
+            context.classList.add('selectedTab');
+
+            if (selectedBlock === 'dutyBlock') {
                 startInterval();
             } else {
                 stopInterval();

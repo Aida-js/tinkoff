@@ -1,17 +1,20 @@
 body {
-    box-sizing: content-box;
+    /* box-sizing: border-box; */
+    margin: 0px;
 }
 
 .header {
     display: flex;
     align-items: center;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 60px;
     background: #00BCD4;
     z-index: 100;
+    flex: 0 60px;
+}
+
+.ownContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
 }
 
 .logo {
@@ -28,37 +31,38 @@ body {
 .content {
     display: flex;
     flex-flow: row nowrap;
-    margin-top: 64px;
+    flex: 1;
 }
 
-.userTypeContainer,
 .insearhableContent {
-    box-shadow: 0px 1px 4px 1px #9E9E9E;
-    height: 700px;
     flex-grow: 1;
-    margin: 6px;
     padding: 12px;
-    height: 100%;
 }
 
 .insearhableContent {
     display: flex;
     flex-flow: row nowrap;
+    overflow: scroll;
+    height: 100%;
 }
 
-.userTypeContainer {
-    width: 200px;
-    max-width: 200px;
-    display: flex;
-    min-width: 200px;
-    flex-flow: column nowrap;
-    align-items: center;
+.navButton {
+    height: 30px;
+    margin-left: 50px;
+    font-size: 18px;
+    border: 0px;
+    background: inherit;
+    outline: inherit;
+    padding-bottom: 10px;
 }
 
-.userTypeContainer button {
-    width: 150px;
-    height: 50px;
-    margin: 5px;
+.selectedTab {
+    border-bottom: 2px solid rebeccapurple;
+}
+
+.navButton:hover {
+    cursor: pointer;
+    opacity: .7;
 }
 
 .reportContainer {
@@ -116,10 +120,8 @@ body {
 
 .loginBlock {
     display: flex;
-    flex-flow: row nowrap;
-    position: relative;
-    flex-grow: 1;
-    height: 100%;
+    max-height: 600px;
+    width: 100%;
 }
 
 .copyAll {
@@ -128,12 +130,13 @@ body {
     font-size: 14px;
     position: absolute;
     right: 10px;
-    top: 10px;
+    top: 75px;
 }
 
 .loginBlock .loginContainer {
     display: flex;
     flex-flow: column wrap;
+    width: 100%;
 }
 
 .reportBlock {
