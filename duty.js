@@ -65,9 +65,65 @@ function getArr () {
         },
         {
             id: "10",
-            text: 'Проверить фильтры',
+            text: 'Проверить запросы по фильтрам',
             needAlert: true,
             time: '18:40',
+            isShowed: false
+        },
+        {
+            id: "11",
+            text: 'Выгрузи 4-й блок',
+            needAlert: true,
+            time: '19:00',
+            isShowed: false
+        },
+        {
+            id: "12",
+            text: 'Отчет сумма заблокирована',
+            needAlert: true,
+            time: '09:30',
+            isShowed: false
+        },
+        {
+            id: "13",
+            text: 'Почта срочные/Обработка SR...',
+            needAlert: true,
+            time: '08:00',
+            isShowed: false
+        },
+        {
+            id: "14",
+            text: 'Почта срочные/Обработка SR...',
+            needAlert: true,
+            time: '19:00',
+            isShowed: false
+        },
+        {
+            id: "15",
+            text: 'ДВД ЧР',
+            needAlert: true,
+            time: '12:30',
+            isShowed: false
+        },
+        {
+            id: "16",
+            text: 'Запросы по отчету "В работу"',
+            needAlert: true,
+            time: '19:00',
+            isShowed: false
+        },
+        {
+            id: "17",
+            text: 'Отправь письмо: "Разблокировка суммы по карте"',
+            needAlert: true,
+            time: '17:00',
+            isShowed: false
+        },
+        {
+            id: "17",
+            text: 'Сбор запросов закрыт. 1) Взять в работу. 2) Обновить заметки. 3) преждевременное зачисление',
+            needAlert: true,
+            time: '14:30',
             isShowed: false
         }
     ];
