@@ -135,7 +135,7 @@ function update(blockName) {
         <table style="width:100%; text-align: justify;">
             <tr>
                 <th>Запросы</th>
-                <th>Дата создания</th> 
+                <th>${blockName === 'fourthBlock' ? 'Срок выполнения до' : 'Дата создания'}</th> 
             </tr>
             ${str}
         </table>
