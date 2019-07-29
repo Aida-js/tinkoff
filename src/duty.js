@@ -50,13 +50,6 @@ function getArr () {
             isShowed: false
         },
         {
-            id: "13",
-            text: 'Почта срочные/Обработка SR...',
-            needAlert: true,
-            time: '08:00',
-            isShowed: false
-        },
-        {
             id: "12",
             text: 'Отчет сумма заблокирована',
             needAlert: true,
